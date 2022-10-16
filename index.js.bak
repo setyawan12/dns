@@ -1184,7 +1184,7 @@ alpha.sendMessage(m.chat, {image: {url: ppnu}, caption: indonesia.profile(userna
             }
             break
             case 'owner': case 'creator': {
-                alpha.sendContact(m.chat, global.owner, m)
+                alpha.sendContact(m.chat, global.ownerdes, m)
             }
             break
             case 'rules':{
@@ -5293,7 +5293,7 @@ reply(teks)
 }
 break
  default:
- if ((budy) && ["p", "proses", "Proses", "P"].includes(budy) && !isCmd) {
+ if ((budy) && ["proses", "Proses", "P"].includes(budy) && !isCmd) {
             if (!m.isGroup) return
 if (!isGroupAdmins && !isGroupOwner && !isCreator) return
 if (!m.quoted) return reply(lang.LockCmd())
@@ -5310,6 +5310,10 @@ if (!m.quoted) return reply(lang.LockCmd())
             let sukses = (db.data.chats[m.chat].setDone || `「 *TRANSAKSI BERHASIL* 」\n\n\`\`\`📆 TANGGAL : @tanggal\n⌚ JAM     : @jam\n✨ STATUS  : Berhasil\`\`\`\n\n📝 Catatan :\n@catatan\n\nTerimakasih @user Next Order ya🙏`).replace('@tanggal', `${tanggal(new Date())}`).replace('@jam', time).replace('@catatan', `${tek ? tek : '-'}`).replace('@user', '@' + m.quoted.sender.split('@')[0])
             alpha.sendTextWithMentions(m.chat, sukses, m)}
             
+			if ((budy) && ["p"].includes(budy) && !isCmd) {
+            reply("*Bot Online*")}
+			if ((budy) && ["bot"].includes(budy) && !isCmd) {
+            reply("*Bot Online*")}
 
 if (budy.startsWith('=>')) {
 if (!m.key.fromMe && !isCreator) return reply(lang.ownerOnly())
